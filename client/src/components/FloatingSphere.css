@@ -1,0 +1,320 @@
+/* Floating Sphere Section */
+.floating-sphere-section {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 60px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(88, 0, 255, 0.05) 50%,
+    rgba(0, 0, 0, 0.3) 100%
+  );
+}
+
+/* Background glows */
+.sphere-bg-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.sphere-glow-1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(88, 0, 255, 0.15) 0%,
+    rgba(88, 0, 255, 0.05) 40%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  animation: glow-pulse 6s ease-in-out infinite;
+}
+
+.sphere-glow-2 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 88, 0, 0.1) 0%,
+    transparent 60%
+  );
+  border-radius: 50%;
+  animation: glow-pulse 8s ease-in-out infinite reverse;
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    opacity: 1;
+  }
+}
+
+/* Container */
+.sphere-container {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+}
+
+.sphere-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #5800ff 0%, #ff5800 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  margin: 0;
+}
+
+.sphere-subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  max-width: 500px;
+  margin: 0;
+}
+
+/* Sphere Viewport */
+.sphere-viewport {
+  width: 400px;
+  height: 400px;
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin: 40px 0;
+}
+
+/* Sphere Wrapper */
+.sphere-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+/* Sphere Core */
+.sphere-core {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: 50%;
+  left: 50%;
+  margin-left: -120px;
+  margin-top: -120px;
+  transform-style: preserve-3d;
+}
+
+/* Sphere Faces */
+.sphere-face {
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: 0;
+  left: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(88, 0, 255, 0.4) 0%,
+    rgba(255, 88, 0, 0.3) 100%
+  );
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 
+    inset 0 0 40px rgba(88, 0, 255, 0.2),
+    0 0 40px rgba(88, 0, 255, 0.15);
+  transform-style: preserve-3d;
+}
+
+.sphere-face::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 30% 30%,
+    rgba(255, 255, 255, 0.3) 0%,
+    transparent 60%
+  );
+  border-radius: 20px;
+}
+
+/* Orbiting Particles */
+.sphere-particle {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 50%;
+  left: 50%;
+  margin-left: -6px;
+  margin-top: -6px;
+  background: radial-gradient(circle, rgba(255, 88, 0, 0.8), rgba(88, 0, 255, 0.4));
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(255, 88, 0, 0.6);
+  transform-style: preserve-3d;
+}
+
+.sphere-particle::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  background: radial-gradient(
+    circle,
+    rgba(255, 88, 0, 0.4) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+/* Center Glow */
+.sphere-center-glow {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    circle,
+    rgba(88, 0, 255, 0.3) 0%,
+    rgba(255, 88, 0, 0.1) 50%,
+    transparent 100%
+  );
+  border-radius: 50%;
+  filter: blur(30px);
+  pointer-events: none;
+  animation: center-glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes center-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.2);
+  }
+}
+
+/* Hint Text */
+.sphere-hint {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  margin-top: 20px;
+  letter-spacing: 0.5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .floating-sphere-section {
+    min-height: 500px;
+    padding: 40px 20px;
+  }
+
+  .sphere-title {
+    font-size: 2rem;
+  }
+
+  .sphere-subtitle {
+    font-size: 1rem;
+  }
+
+  .sphere-viewport {
+    width: 300px;
+    height: 300px;
+  }
+
+  .sphere-core {
+    width: 180px;
+    height: 180px;
+    margin-left: -90px;
+    margin-top: -90px;
+  }
+
+  .sphere-face {
+    width: 180px;
+    height: 180px;
+    border-radius: 15px;
+  }
+
+  .sphere-face::before {
+    border-radius: 15px;
+  }
+
+  .sphere-glow-1 {
+    width: 400px;
+    height: 400px;
+  }
+
+  .sphere-glow-2 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .floating-sphere-section {
+    min-height: 450px;
+    padding: 30px 15px;
+  }
+
+  .sphere-title {
+    font-size: 1.5rem;
+  }
+
+  .sphere-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .sphere-viewport {
+    width: 250px;
+    height: 250px;
+  }
+
+  .sphere-core {
+    width: 150px;
+    height: 150px;
+    margin-left: -75px;
+    margin-top: -75px;
+  }
+
+  .sphere-face {
+    width: 150px;
+    height: 150px;
+    border-radius: 12px;
+  }
+
+  .sphere-face::before {
+    border-radius: 12px;
+  }
+}

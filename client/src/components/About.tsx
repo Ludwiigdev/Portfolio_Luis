@@ -83,9 +83,11 @@ export default function About() {
               rotateX: photoRotate,
             }}
           >
-            <div className="relative w-80 h-80 md:w-96 md:h-96 group">
+            <div className="relative w-80 h-80 md:w-96 md:h-96 group z-10">
               {/* Floating Languages */}
-              <FloatingLanguages />
+              <div className="absolute inset-0 z-20">
+                <FloatingLanguages />
+              </div>
               {/* Animated glow background - más épico */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-500/30 rounded-3xl blur-3xl"
