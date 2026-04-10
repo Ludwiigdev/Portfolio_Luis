@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, ArrowUp, Code2, Zap, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
@@ -7,9 +7,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:contact@example.com', label: 'Email' },
+    { icon: Github, href: 'https://github.com/Ludwiigdev', label: 'GitHub', color: 'hover:text-white' },
+    { icon: Linkedin, href: 'https://linkedin.com/in/ludwiigdev', label: 'LinkedIn', color: 'hover:text-blue-400' },
+    { icon: Mail, href: 'mailto:luis@example.com', label: 'Email', color: 'hover:text-red-400' },
   ];
 
   const quickLinks = [
@@ -18,6 +18,12 @@ export default function Footer() {
     { href: '#skills', label: t('nav.skills') },
     { href: '#projects', label: t('nav.projects') },
     { href: '#contact', label: t('nav.contact') },
+  ];
+
+  const techStack = [
+    { icon: Code2, label: 'React & TypeScript', color: 'from-blue-500 to-cyan-500' },
+    { icon: Zap, label: 'Node.js & Express', color: 'from-yellow-500 to-orange-500' },
+    { icon: Globe, label: 'Full Stack', color: 'from-purple-500 to-pink-500' },
   ];
 
   const scrollToTop = () => {
@@ -63,6 +69,43 @@ export default function Footer() {
 
       <div className="bg-muted/30 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-16">
+          {/* Tech Stack Showcase */}
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {techStack.map((tech, idx) => {
+              const Icon = tech.icon;
+              return (
+                <motion.div
+                  key={tech.label}
+                  className={`p-4 rounded-lg bg-gradient-to-r ${tech.color} bg-opacity-10 border border-opacity-20 border-white backdrop-blur-sm`}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                  transition={{ duration: 0.3 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                >
+                  <div className="flex items-center gap-3">
+                    <Icon className="w-5 h-5" />
+                    <span className="text-sm font-medium">{tech.label}</span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+
+          <motion.div
+            className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-12"
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            transition={{ duration: 0.8 }}
+            style={{ originX: 0.5 }}
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}
             <motion.div
@@ -118,7 +161,7 @@ export default function Footer() {
               </ul>
             </motion.div>
 
-            {/* Social Links - Sin cuadros de colores */}
+            {/* Social Links */}
             <motion.div
               variants={itemVariants}
               initial="hidden"
@@ -131,21 +174,24 @@ export default function Footer() {
                 {socialLinks.map((link, idx) => {
                   const Icon = link.icon;
                   return (
-                    <motion.a
+                    <motion.div
                       key={link.label}
-                      href={link.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/60 hover:text-foreground transition-colors duration-300"
-                      whileHover={{ scale: 1.2, y: -5 }}
+                      whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      initial={{ opacity: 0, scale: 0 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: idx * 0.1, duration: 0.3 }}
-                      title={link.label}
                     >
-                      <Icon className="w-5 h-5" />
-                    </motion.a>
+                      <motion.a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-purple-500/20 text-foreground/60 hover:text-foreground transition-all duration-300 ${link.color} border border-border/50 hover:border-primary/50`}
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.1, duration: 0.3 }}
+                        title={link.label}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </motion.a>
+                    </motion.div>
                   );
                 })}
               </div>
@@ -202,13 +248,22 @@ export default function Footer() {
               &copy; {currentYear} Luis. {t('footer.rights')}
             </motion.p>
 
-            <motion.p
-              className="flex items-center gap-2"
-              animate={{ scale: [1, 1.1, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
+            <motion.div
+              className="flex items-center gap-2 flex-wrap justify-center"
             >
-              {t('footer.made_with')}
-            </motion.p>
+              <motion.p
+                animate={{ scale: [1, 1.1, 1] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                {t('footer.made_with')}
+              </motion.p>
+              <motion.span
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                💻
+              </motion.span>
+            </motion.div>
           </motion.div>
         </div>
       </div>
