@@ -4,7 +4,6 @@ import About from '@/components/About';
 import Skills from '@/components/Skills';
 import Projects from '@/components/Projects';
 import Contact from '@/components/Contact';
-import FloatingSphere from '@/components/FloatingSphere';
 import Footer from '@/components/Footer';
 
 
@@ -18,7 +17,6 @@ export default function Home() {
         <Skills />
         <Projects />
         <Contact />
-        <FloatingSphere />
       </main>
       <Footer />
     </div>

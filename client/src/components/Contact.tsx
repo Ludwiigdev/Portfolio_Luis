@@ -3,6 +3,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Github, Linkedin, Twitter } from 'lucide-react';
+import GeometricBackground from './GeometricBackground';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -91,6 +92,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 px-4 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
+        <GeometricBackground />
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
