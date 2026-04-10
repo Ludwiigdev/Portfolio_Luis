@@ -65,6 +65,7 @@ const translations = {
     'contact.sending': 'Enviando...',
     'contact.success': '¡Mensaje enviado con éxito!',
     'contact.error': 'Error al enviar el mensaje',
+    'contact.follow': 'Sígueme en redes',
 
     // Footer
     'footer.rights': 'Todos los derechos reservados',
@@ -72,6 +73,9 @@ const translations = {
     'footer.navigation': 'Navegación',
     'footer.social': 'Redes Sociales',
     'footer.back_to_top': 'Volver arriba',
+    'footer.email': 'Email',
+    'footer.phone': 'Teléfono',
+    'footer.location': 'Ubicación',
 
     // About Achievements
     'about.achievement_agile': 'Desarrollo Ágil',
@@ -129,7 +133,7 @@ const translations = {
 
     // Contact
     'contact.title': 'Contact',
-    'contact.description': 'Have a project in mind? Let\'s discuss it.',
+    'contact.description': 'Do you have a project in mind? Contact me to discuss it.',
     'contact.name': 'Name',
     'contact.email': 'Email',
     'contact.message': 'Message',
@@ -137,13 +141,17 @@ const translations = {
     'contact.sending': 'Sending...',
     'contact.success': 'Message sent successfully!',
     'contact.error': 'Error sending message',
+    'contact.follow': 'Follow me on social media',
 
     // Footer
     'footer.rights': 'All rights reserved',
     'footer.made_with': 'Made with ❤️ by Luis',
     'footer.navigation': 'Navigation',
     'footer.social': 'Social Media',
-    'footer.back_to_top': 'Back to Top',
+    'footer.back_to_top': 'Back to top',
+    'footer.email': 'Email',
+    'footer.phone': 'Phone',
+    'footer.location': 'Location',
 
     // About Achievements
     'about.achievement_agile': 'Agile Development',

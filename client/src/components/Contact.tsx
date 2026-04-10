@@ -3,7 +3,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, Github, Linkedin, Twitter } from 'lucide-react';
-import GeometricBackground from './GeometricBackground';
 
 export default function Contact() {
   const { t } = useLanguage();
@@ -84,15 +83,14 @@ export default function Contact() {
   ];
 
   const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Mail, href: 'mailto:contact@example.com', label: 'Email' },
+    { icon: Github, href: 'https://github.com/Ludwiigdev', label: 'GitHub' },
+    { icon: Linkedin, href: 'https://linkedin.com/in/ludwiigdev', label: 'LinkedIn' },
+    { icon: Mail, href: 'mailto:luis@example.com', label: 'Email' },
   ];
 
   return (
     <section id="contact" className="py-20 px-4 relative overflow-hidden">
       <div className="absolute inset-0 -z-10">
-        <GeometricBackground />
         <div className="absolute top-1/2 left-0 w-96 h-96 bg-pink-500/5 rounded-full blur-3xl" />
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl" />
       </div>
@@ -164,25 +162,31 @@ export default function Contact() {
               );
             })}
 
-            {/* Social Links - Sin emojis, solo iconos */}
+            {/* Social Links - Con iconos estilizados */}
             <motion.div variants={itemVariants} className="pt-6">
-              <h3 className="font-semibold mb-4">Sígueme en redes</h3>
+              <h3 className="font-semibold mb-4">{t('contact.follow')}</h3>
               <div className="flex gap-4">
                 {socialLinks.map((social, idx) => {
                   const Icon = social.icon;
                   return (
-                    <motion.a
+                    <motion.div
                       key={idx}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-foreground/60 hover:text-foreground transition-colors duration-300"
-                      whileHover={{ scale: 1.2, y: -5 }}
+                      whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
-                      title={social.label}
                     >
-                      <Icon className="w-6 h-6" />
-                    </motion.a>
+                      <motion.a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-gradient-to-br from-primary/20 to-purple-500/20 text-foreground/60 hover:text-foreground transition-all duration-300 border border-border/50 hover:border-primary/50"
+                        initial={{ opacity: 0, scale: 0 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: idx * 0.1, duration: 0.3 }}
+                        title={social.label}
+                      >
+                        <Icon className="w-5 h-5" />
+                      </motion.a>
+                    </motion.div>
                   );
                 })}
               </div>

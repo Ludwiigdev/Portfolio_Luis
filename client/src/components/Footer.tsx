@@ -1,5 +1,5 @@
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Github, Linkedin, Mail, Heart, ArrowUp, Code2, Zap, Globe } from 'lucide-react';
+import { Github, Linkedin, Mail, Heart, ArrowUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Footer() {
@@ -20,11 +20,7 @@ export default function Footer() {
     { href: '#contact', label: t('nav.contact') },
   ];
 
-  const techStack = [
-    { icon: Code2, label: 'React & TypeScript', color: 'from-blue-500 to-cyan-500' },
-    { icon: Zap, label: 'Node.js & Express', color: 'from-yellow-500 to-orange-500' },
-    { icon: Globe, label: 'Full Stack', color: 'from-purple-500 to-pink-500' },
-  ];
+
 
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -69,42 +65,7 @@ export default function Footer() {
 
       <div className="bg-muted/30 backdrop-blur-sm border-b border-border">
         <div className="container mx-auto px-4 py-16">
-          {/* Tech Stack Showcase */}
-          <motion.div
-            className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            {techStack.map((tech, idx) => {
-              const Icon = tech.icon;
-              return (
-                <motion.div
-                  key={tech.label}
-                  className={`p-4 rounded-lg bg-gradient-to-r ${tech.color} bg-opacity-10 border border-opacity-20 border-white backdrop-blur-sm`}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: idx * 0.1, duration: 0.5 }}
-                >
-                  <div className="flex items-center gap-3">
-                    <Icon className="w-5 h-5" />
-                    <span className="text-sm font-medium">{tech.label}</span>
-                  </div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
 
-          <motion.div
-            className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-12"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8 }}
-            style={{ originX: 0.5 }}
-          />
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
             {/* Brand */}

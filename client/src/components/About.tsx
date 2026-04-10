@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useRef } from 'react';
+import FloatingLanguages from './FloatingLanguages';
 
 export default function About() {
   const { t } = useLanguage();
@@ -83,6 +84,8 @@ export default function About() {
             }}
           >
             <div className="relative w-80 h-80 md:w-96 md:h-96 group">
+              {/* Floating Languages */}
+              <FloatingLanguages />
               {/* Animated glow background - más épico */}
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-primary/30 to-purple-500/30 rounded-3xl blur-3xl"
@@ -130,8 +133,9 @@ export default function About() {
                 />
               </div>
 
-              {/* Floating particles effect */}
-              {particles.map((particle) => (
+              {/* Original floating particles effect */}
+              {/* Disabled original particles - using FloatingLanguages instead */}
+              {/* particles.map((particle) => (
                 <motion.div
                   key={particle.id}
                   className="absolute w-1 h-1 bg-primary/40 rounded-full"
@@ -150,7 +154,7 @@ export default function About() {
                     repeat: Infinity,
                   }}
                 />
-              ))}
+              )) */}
             </div>
           </motion.div>
 
